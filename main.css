@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+.navigation__bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.navigation__bar--logo{
+    margin-right: 20px;
+    width: 20%;
+    height: 20%;
+}
+
+.navigation__bar--logo img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling new song section */
+.newSong__section{
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding-bottom: 40px;
+}
+
+.section__title{
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: #ccc;
+    text-align: center;
+}
+
+.input__group{
+    margin: 0 10% 30px;
+}
+
+.input__group label{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.input__group input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.error__mess{
+    color: red;
+    display: none;
+}
+
+.button{
+    margin: auto;
+    display: block;
+    width: fit-content;
+    padding:  10px 28px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #4c6be3;
+    cursor: pointer;
+}
+
+/* Styling song list */
+.songList__section{
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 30px;
+    border-radius: 8px;
+}
+
+.song__item{
+    list-style: none;
+    padding: 20px;
+    margin: 10px 10%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.song__name{
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* Styling responsive */
+@media screen and (min-width: 768px){
+    .app__title{
+        font-size: 3rem;
+    }
+
+    .main{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    form, section{
+        width: 45%;
+    }
+
+    form{
+        height: fit-content;
+    }
+}
