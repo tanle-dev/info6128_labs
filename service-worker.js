@@ -8,7 +8,7 @@ const cacheName = 'Cache Data V1.0';
  */
 self.addEventListener('install', function(event) {
     // Activate itself when it enters the waiting phase.
-    // self.skipWaiting();
+    self.skipWaiting();
 
     // Add a call to skipWaiting here
     event.waitUntil(
