@@ -56,24 +56,26 @@ self.addEventListener('activate', function(event) {
  */
 self.addEventListener('fetch', function(event) {
     // Stale While Revalidate
-    event.respondWith(
-        caches.open(cacheName)
-            .then((cache)=>{
-                return cache.match(event.request)
-                            .then((cachedRespond) => {
-                                const fetchedRespond = fetch(event.request)
-                                    .then((networkRespond) => {
-                                        cache.put(event.request, networkRespond.clone())
-                                        return networkRespond
-                                    })
-                                    .catch(() => {
-                                            return cache.match("/index.html")
-                                        }
-                                    )
-                                return cachedRespond || fetchedRespond
-                            })
-            })
-    )
+    if(event.request.method == "GET"){
+        event.respondWith(
+            caches.open(cacheName)
+                .then((cache)=>{
+                    return cache.match(event.request)
+                                .then((cachedRespond) => {
+                                    const fetchedRespond = fetch(event.request)
+                                        .then((networkRespond) => {
+                                            cache.put(event.request, networkRespond.clone())
+                                            return networkRespond
+                                        })
+                                        .catch(() => {
+                                                return cache.match("/index.html")
+                                            }
+                                        )
+                                    return cachedRespond || fetchedRespond
+                                })
+                })
+        )
+    }
 });
 
 
