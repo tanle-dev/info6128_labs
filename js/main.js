@@ -54,12 +54,12 @@ function addNewSong() {
  * Register service worker
  * 
  */
-if ('serviceWorker' in navigator) {
-    console.log('Service Worker is supported');
-    navigator.serviceWorker
-        .register('/service-worker.js', { scope: '/' })
-        .then( (registration)  => {
-            console;log('Service Worker is registered', registration);
-        })
-        .catch( (err) =>  {});
-}
+// if ('serviceWorker' in navigator) {
+//     console.log('Service Worker is supported');
+//     navigator.serviceWorker
+//         .register('/service-worker.js', { scope: '/' })
+//         .then( (registration)  => {
+//             console;log('Service Worker is registered', registration);
+//         })
+//         .catch( (err) =>  {});
+// }

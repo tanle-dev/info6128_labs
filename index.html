@@ -76,8 +76,17 @@
           <h2 class="song__list--title section__title">LIST OF SONGS</h2>
           <ul class="song__list">
             <li class="song__item" hidden>
-              <p class="song__name"></p>
-              <p class="singer"></p>
+              <div class="item__body">
+                <div>
+                  <p class="song__name"></p>
+                  <p class="singer"></p>
+                </div>
+                <p class="like__count">Likes: <span>0</span></p>
+              </div>
+              <div class="button__group">
+                <button class="button item__btn remove__btn">Remove</button>
+                <button class="button item__btn like__btn">+1 Like</button>
+              </div>
             </li>
           </ul>
         </section>
