@@ -33,17 +33,17 @@ function validateForm(elementId){
  * @returns  none
  */
 
+let songList = document.getElementsByClassName("song__list")[0];
 let songName = document.getElementById("song__title");
 let artistName = document.getElementById("song__artist");
 
-function addSongToList() {
-    let songList = document.getElementsByClassName("song__list")[0];
+function addSongToList(song) {
     let songItem = document.getElementsByClassName("song__item")[0].cloneNode(true);
     songItem.removeAttribute("hidden");
     songList.appendChild(songItem);
-    songItem.getElementsByClassName("song__name")[0].innerHTML = songName.value;
-    
-    songItem.getElementsByClassName("singer")[0].innerHTML = artistName.value;
+    songItem.getElementsByClassName("song__name")[0].innerHTML = song.title;
+    songItem.getElementsByClassName("singer")[0].innerHTML = song.artist;
+    songItem.getElementsByClassName("likes")[0].innerHTML = song.likes
     
     songItem.getElementsByClassName("remove__btn")[0].addEventListener("click", () => {
         songList.removeChild(songItem)
@@ -51,13 +51,15 @@ function addSongToList() {
     songItem.getElementsByClassName("like__btn")[0].addEventListener("click", () => {
     })
 
-    AppDb.add(songName.value, artistName.value, 0)
+    if(songName.value != "" && artistName.value != ""){
+        AppDb.add(songName.value, artistName.value, 0)
             .then(() => {
                 console.log("Add to database successfully")
             })
             .catch(error => {
                 console.log("Fail to add ", error.message)
             })
+    }
 }
 
 /**
@@ -68,15 +70,25 @@ document.getElementById("submit__btn").addEventListener("click", () => {
     validateForm("song__artist");
     if(validateForm("song__title") && validateForm("song__artist"))
     {
-        addSongToList()
+        let song = {
+            title: songName.value,
+            artist: artistName.value,
+            likes: 0
+        }
+        addSongToList(song)
         songName.value = "";
         artistName.value = "";
     }
 });
 
-function renderSongListFromDatabase(result){
-
-}
+AppDb.getAll()
+    .then(result => {
+        result.forEach(song => {
+            console.log(song)
+            addSongToList(song)
+            }
+        )
+    })
 
 /**
  * Register service worker

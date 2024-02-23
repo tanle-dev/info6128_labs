@@ -75,7 +75,7 @@ class AppDB{
             getDocs(dbCollection)
                 .then(querySnapshot => {
                     querySnapshot.forEach( doc => {
-                        const data = doc.data
+                        const data = doc.data()
                         data.id = doc.id
                         result.push(data)
                     })
@@ -89,6 +89,11 @@ class AppDB{
 
     update(id){
         console.log("Update like with id", id)
+        return new Promise((resolve, reject) => {
+            if(!this.isAvailable){
+                reject("Database's not opened!")
+            }
+        })
     }
 
     delete(id){
