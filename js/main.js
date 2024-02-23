@@ -42,16 +42,21 @@ function addSongToList(song) {
     songItem.removeAttribute("hidden");
     songList.appendChild(songItem);
     songItem.getElementsByClassName("song__name")[0].innerHTML = song.title;
-    songItem.getElementsByClassName("singer")[0].innerHTML = song.artist;
+    songItem.getElementsByClassName("singer")[0].innerHTML = song.singer;
     songItem.getElementsByClassName("likes")[0].innerHTML = song.likes
     
     songItem.getElementsByClassName("remove__btn")[0].addEventListener("click", () => {
         songList.removeChild(songItem)
+        AppDb.delete(song)
+            .then(() => console.log("Deleting successfully"))
+            .catch(error => "Error deleting")
     })
     songItem.getElementsByClassName("like__btn")[0].addEventListener("click", () => {
         song.likes++
         songItem.getElementsByClassName("likes")[0].innerHTML = song.likes
         AppDb.update(song)
+            .then(() => console.log("Updating successfully"))
+            .catch(error => "Error updating")
     })
 
     if(songName.value != "" && artistName.value != ""){
