@@ -49,6 +49,9 @@ function addSongToList(song) {
         songList.removeChild(songItem)
     })
     songItem.getElementsByClassName("like__btn")[0].addEventListener("click", () => {
+        song.likes++
+        songItem.getElementsByClassName("likes")[0].innerHTML = song.likes
+        AppDb.update(song)
     })
 
     if(songName.value != "" && artistName.value != ""){

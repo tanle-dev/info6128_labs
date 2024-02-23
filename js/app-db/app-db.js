@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { addDoc, collection, getDocs, getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { addDoc, collection, doc, getDocs, getFirestore, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 class AppDB{
     constructor(){
@@ -87,17 +87,43 @@ class AppDB{
         })
     }
 
-    update(id){
-        console.log("Update like with id", id)
+    update(song){
+        console.log("Update like with id", song.id)
         return new Promise((resolve, reject) => {
             if(!this.isAvailable){
                 reject("Database's not opened!")
             }
+
+            const docRef = doc(this.db, "SongList", song.id)
+
+            updateDoc(docRef, {
+                likes: song.likes
+            })
+                .then(() => {
+                    resolve()
+                })
+                .catch(error => {
+                    reject(error.message)
+                })
         })
     }
 
-    delete(id){
+    delete(song){
         console.log("removing song with id", id)
+        return new Promise((resolve, reject) => {
+            if(!this.isAvailable){
+                reject("Database's not opened")
+
+                const docRef = doc(this.db, "SongList", song.id)
+                deleteDoc(docRef)
+                    .then(() => {
+                        resolve()
+                    })
+                    .catch(error => {
+                        reject(error.message)
+                    })
+            }
+        })
     }
 }
 
