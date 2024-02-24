@@ -38,7 +38,6 @@ class AppDB{
     }
 
     add(title, singer, likes){
-        console.log("App Db: " + title + singer + likes)
         return new Promise((resolve, reject) => {
             if(!this.isAvailable){
                 reject("Database not opened!")
@@ -53,17 +52,15 @@ class AppDB{
             const dbCollection = collection(this.db, "SongList")
             addDoc(dbCollection, newSong)
             .then(docRef => {
-                console.log("FireStore add successfully", docRef.id)
+                resolve(docRef)
             })
             .catch(error => {
                 reject(error.message)
-                console.log("aaa")
             })
         })
     }
 
     getAll(){
-        console.log("Get all songs")
         return new Promise((resolve, reject) => {
             if(!this.isAvailable){
                 reject("Database not opened!")
@@ -88,7 +85,6 @@ class AppDB{
     }
 
     update(song){
-        console.log("Update like with id", song.id)
         return new Promise((resolve, reject) => {
             if(!this.isAvailable){
                 reject("Database's not opened!")
@@ -109,7 +105,6 @@ class AppDB{
     }
 
     delete(song){
-        console.log("removing song with id", song.id)
         return new Promise((resolve, reject) => {
             if(!this.isAvailable){
                 reject("Database's not opened")

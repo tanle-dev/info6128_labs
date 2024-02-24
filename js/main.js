@@ -6,10 +6,8 @@ import AppDb from "./app-db/app-db.js";
 
 AppDb.open()
     .then(() => {
-        console.log("Success")
     })
     .catch(error => {
-        console.log("Fail to open: ", error)
     })
 /**
  * 
@@ -45,29 +43,31 @@ function addSongToList(song) {
     songItem.getElementsByClassName("singer")[0].innerHTML = song.singer;
     songItem.getElementsByClassName("likes")[0].innerHTML = song.likes
     
+    if(songName.value != "" && artistName.value != ""){
+        AppDb.add(songName.value, artistName.value, 0)
+            .then((songData) => {
+                song.id = songData.id
+            })
+            .catch(error => {
+                {}
+            })
+    }
+
     songItem.getElementsByClassName("remove__btn")[0].addEventListener("click", () => {
         songList.removeChild(songItem)
         AppDb.delete(song)
-            .then(() => console.log("Deleting successfully"))
+            .then(() => {})
             .catch(error => "Error deleting")
     })
     songItem.getElementsByClassName("like__btn")[0].addEventListener("click", () => {
         song.likes++
         songItem.getElementsByClassName("likes")[0].innerHTML = song.likes
         AppDb.update(song)
-            .then(() => console.log("Updating successfully"))
+            .then(() => {})
             .catch(error => "Error updating")
     })
 
-    if(songName.value != "" && artistName.value != ""){
-        AppDb.add(songName.value, artistName.value, 0)
-            .then(() => {
-                console.log("Add to database successfully")
-            })
-            .catch(error => {
-                console.log("Fail to add ", error.message)
-            })
-    }
+    
 }
 
 /**
@@ -80,7 +80,7 @@ document.getElementById("submit__btn").addEventListener("click", () => {
     {
         let song = {
             title: songName.value,
-            artist: artistName.value,
+            singer: artistName.value,
             likes: 0
         }
         addSongToList(song)
@@ -92,7 +92,6 @@ document.getElementById("submit__btn").addEventListener("click", () => {
 AppDb.getAll()
     .then(result => {
         result.forEach(song => {
-            console.log(song)
             addSongToList(song)
             }
         )
@@ -103,11 +102,9 @@ AppDb.getAll()
  * 
  */
 if ('serviceWorker' in navigator) {
-    console.log('Service Worker is supported');
     navigator.serviceWorker
         .register('/service-worker.js', { scope: '/' })
         .then( (registration)  => {
-            console;log('Service Worker is registered', registration);
         })
         .catch( (err) =>  {});
 }
