@@ -21,7 +21,6 @@ class AppDB{
                 
                   // Initialize Firebase
                 const app = initializeApp(firebaseConfig);
-        
                 const db = getFirestore(app)
                 if(db){
                     this.db = db,
@@ -48,7 +47,6 @@ class AppDB{
                 singer: singer,
                 likes: likes
             }
-
             const dbCollection = collection(this.db, "SongList")
             addDoc(dbCollection, newSong)
             .then(docRef => {
@@ -67,7 +65,6 @@ class AppDB{
             }
 
             const result = []
-
             const dbCollection = collection(this.db, "SongList")
             getDocs(dbCollection)
                 .then(querySnapshot => {
@@ -91,7 +88,6 @@ class AppDB{
             }
 
             const docRef = doc(this.db, "SongList", song.id)
-
             updateDoc(docRef, {
                 likes: song.likes
             })
