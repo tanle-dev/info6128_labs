@@ -101,10 +101,10 @@ AppDb.getAll()
  * Register service worker
  * 
  */
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('/service-worker.js', { scope: '/' })
-        .then( (registration)  => {
-        })
-        .catch( (err) =>  {});
-}
+// if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker
+//         .register('/service-worker.js', { scope: '/' })
+//         .then( (registration)  => {
+//         })
+//         .catch( (err) =>  {});
+// }

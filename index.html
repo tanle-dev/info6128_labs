@@ -1,98 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Meta tags for apple -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Music App" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="theme-color" content="#fff" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Link to icons-->
-    <link rel="manifest" href="./manifest.json" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/icons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/assets/icons/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="/assets/icons/safari-pinned-tab.svg"
-      color="#5bbad5"
-    />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta
-      name="msapplication-TileImage"
-      content="/assets/icons/mstile-144x144.png"
-    />
-    <meta name="theme-color" content="#ffffff" />
+  <!-- Meta tags for apple -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Music App" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="theme-color" content="#fff" />
 
-    <!-- Link to manifest -->
-    <link rel="stylesheet" href="./main.css" />
-    <title>Music App</title>
-  </head>
-  <body>
-    <div class="container">
-      <nav class="navigation__bar">
+  <!-- Link to icons-->
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+  <link rel="manifest" href="/assets/icons/site.webmanifest" />
+  <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#5bbad5" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="msapplication-TileImage" content="/assets/icons/mstile-144x144.png" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Link to manifest -->
+  <link rel="stylesheet" href="./main.css" />
+  <title>Music App</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navigation__bar">
+      <div class="navigation__bar--name">
         <div class="navigation__bar--logo">
           <img src="./assets/imgs/logo__192x192.png" alt="App Logo" />
         </div>
         <h1 class="app__title">My Music App 1</h1>
-      </nav>
-      <div class="main">
-        <form class="newSong__section">
-          <h2 class="newSong__title section__title">NEW SONG</h2>
-          <div class="input__group">
-            <label for="song__title" class="input__label">Title</label>
-            <input id="song__title" type="text" class="input__item" required />
-            <p class="error__mess">Please enter Song's name</p>
-          </div>
-
-          <div class="input__group">
-            <label for="song__artist" class="input__label">Artist</label>
-            <input id="song__artist" type="text" class="input__item" required />
-            <p class="error__mess">Please enter Artist's name</p>
-          </div>
-
-          <div id="submit__btn" class="button" type="submit">Add</div>
-        </form>
-
-        <section class="songList__section">
-          <h2 class="song__list--title section__title">LIST OF SONGS</h2>
-          <ul class="song__list">
-            <li class="song__item" hidden>
-              <div class="item__body">
-                <div>
-                  <p class="song__name"></p>
-                  <p class="singer"></p>
-                </div>
-                <p class="like__count">Likes: <span class="likes">0</span></p>
-              </div>
-              <div class="button__group">
-                <button class="button item__btn remove__btn">Remove</button>
-                <button class="button item__btn like__btn">+1 Like</button>
-              </div>
-            </li>
-          </ul>
-        </section>
       </div>
-    </div>
+      <ul class="navigation__bar--menu">
+        <li class="menu__item">
+          <a href="#notifi">Notification</a>
+        </li>
+        <li class="menu__item">
+          <a href="#music">Music Library</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-    <script src="./js/main.js" type="module"></script>
-  </body>
+  <div class="notification__screen" id="notifi">
+    <form class="newNotifi__section newSong__section">
+      <h2 class="newSong__title section__title">Notifications</h2>
+
+      <div id="sendNotifi__btn" class="button" type="submit">Send Notifications</div>
+
+      <div class="input__group">
+        <label for="song__title" class="input__label">Title</label>
+        <input id="song__title" type="text" class="input__item" required />
+        <p class="error__mess">Please enter title</p>
+      </div>
+
+      <div class="input__group">
+        <label for="song__artist" class="input__label">Description</label>
+        <input id="song__artist" type="text" class="input__item" required />
+        <p class="error__mess">Please enter description</p>
+      </div>
+
+      <div id="sendNotifi__btn" class="button" type="submit">Show</div>
+    </form>
+  </div>
+  <div class="music__lib" id="music">
+    <form class="newSong__section">
+      <h2 class="newSong__title section__title">NEW SONG</h2>
+      <div class="input__group">
+        <label for="song__title" class="input__label">Title</label>
+        <input id="song__title" type="text" class="input__item" required />
+        <p class="error__mess">Please enter Song's name</p>
+      </div>
+
+      <div class="input__group">
+        <label for="song__artist" class="input__label">Artist</label>
+        <input id="song__artist" type="text" class="input__item" required />
+        <p class="error__mess">Please enter Artist's name</p>
+      </div>
+
+      <div id="submit__btn" class="button" type="submit">Add</div>
+    </form>
+
+    <section class="songList__section">
+      <h2 class="song__list--title section__title">LIST OF SONGS</h2>
+      <ul class="song__list">
+        <li class="song__item" hidden>
+          <div class="item__body">
+            <div>
+              <p class="song__name"></p>
+              <p class="singer"></p>
+            </div>
+            <p class="like__count">Likes: <span class="likes">0</span></p>
+          </div>
+          <div class="button__group">
+            <button class="button item__btn remove__btn">Remove</button>
+            <button class="button item__btn like__btn">+1 Like</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="./js/main.js" type="module"></script>
+</body>
+
 </html>
