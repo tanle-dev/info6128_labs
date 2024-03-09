@@ -45,9 +45,10 @@ sendNotificationBtn.addEventListener('click', () => {
     requestPermission()
 })
 showNotificationBtn.addEventListener('click', () => {
-    if(validateForm('notifi__title')){
-        displayNotification()
-    }
+    validateForm('notifi__title')
+    // if(){
+    //     displayNotification()
+    // }
 })
 
 function requestPermission(){
