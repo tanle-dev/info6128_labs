@@ -78,13 +78,13 @@ function displayNotification(){
         ]
     }
     const title = document.getElementById('notifi__title').value
-    try {
-        new Notification('Hi');
-    } catch (error) {
-        console.error('Notification error:', error);
-    }
+    // try {
+    //     new Notification('Hi');
+    // } catch (error) {
+    //     console.error('Notification error:', error);
+    // }
 
-    console.log('hi')
+    console.log('hihih')
     // navigator.serviceWorker.ready
     //  .then(registration => {
     //     registration.showNotification(title, options)
