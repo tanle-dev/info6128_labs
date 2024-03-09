@@ -32,7 +32,6 @@ if('Notification' in window && 'serviceWorker' in navigator){
         case 'granted':
             sendNotificationBtn.classList.add('inactive')
             formNotification.classList.remove('inactive')
-            new Notification("Tan Le")
             break
         case 'denied':
             sendNotificationBtn.classList.remove('inactive')
@@ -64,20 +63,20 @@ function requestPermission(){
 }
 
 function displayNotification(){
-    const options = {
-        body: document.getElementById('notifi__desc').value,
-        actions: [
-            {
-                action: 'confirm',
-                title: 'OK'
-            },
-            {
-                action: 'cancel',
-                title: 'Cancel'
-            }
-        ]
-    }
-    const title = document.getElementById('notifi__title').value
+    // const options = {
+    //     body: document.getElementById('notifi__desc').value,
+    //     actions: [
+    //         {
+    //             action: 'confirm',
+    //             title: 'OK'
+    //         },
+    //         {
+    //             action: 'cancel',
+    //             title: 'Cancel'
+    //         }
+    //     ]
+    // }
+    // const title = document.getElementById('notifi__title').value
     // try {
     //     new Notification('Hi');
     // } catch (error) {
