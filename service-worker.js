@@ -18,7 +18,8 @@ self.addEventListener('install', function(event) {
                     '/',
                     '/index.html',
                     '/main.css',
-                    '/js/main.js',
+                    // '/js/main.js',
+                    '/js/notifiMain.js',
                     '/manifest.json',
                     '/service-worker.js',
                     '/assets/icons/android-chrome-144x144.png',
@@ -77,3 +78,29 @@ self.addEventListener('fetch', function(event) {
         )
     }
 });
+
+/**
+ * On Message posted to Service worker
+ */
+
+self.addEventListener('message', event => {
+    console.log('Msg received: ', event)
+    const data = event.data
+    console.log(event.data)
+
+    const whoPostedTheMsg = event.source
+    whoPostedTheMsg.postMessage('Thank to post')
+
+    const option = {
+        includeUncontrolled: false,
+        type: 'window'
+    }
+    clients.matchAll(option)
+    .then(matchClients => {
+        matchClients.forEach(client => {
+            if(client.id !== whoPostedTheMsg.id){
+                client.postMessage("Some one posted sthg")
+            }
+        });
+    })
+})

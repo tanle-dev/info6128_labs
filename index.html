@@ -48,25 +48,26 @@
   </div>
 
   <div class="notification__screen" id="notifi">
-    <form class="newNotifi__section newSong__section">
+    <div class="newNotifi__section newSong__section">
       <h2 class="newSong__title section__title">Notifications</h2>
 
-      <div id="sendNotifi__btn" class="button" type="submit">Send Notifications</div>
+      <button id="sendNotifi__btn" class="button" type="submit">Send Notifications</button>
 
-      <div class="input__group">
-        <label for="song__title" class="input__label">Title</label>
-        <input id="song__title" type="text" class="input__item" required />
-        <p class="error__mess">Please enter title</p>
-      </div>
+      <form class="newNotifi__section inactive" id="notifi__section">
+        <div class="input__group">
+          <label for="notifi__title" class="input__label">Title</label>
+          <input id="notifi__title" type="text" class="input__item" />
+          <p class="error__mess">Please enter title</p>
+        </div>
 
-      <div class="input__group">
-        <label for="song__artist" class="input__label">Description</label>
-        <input id="song__artist" type="text" class="input__item" required />
-        <p class="error__mess">Please enter description</p>
-      </div>
-
-      <div id="sendNotifi__btn" class="button" type="submit">Show</div>
-    </form>
+        <div class="input__group">
+          <label for="notifi__desc" class="input__label">Description</label>
+          <input id="notifi__desc" type="text" class="input__item" />
+          <p class="error__mess">Please enter description</p>
+        </div>
+        <button id="show_notifi" class="button" type="submit">Show</button>
+      </form>
+    </div>
   </div>
   <div class="music__lib" id="music">
     <form class="newSong__section">
@@ -106,7 +107,7 @@
     </section>
   </div>
 
-  <script src="./js/main.js" type="module"></script>
+  <script src="./js/notifiMain.js" type="module"></script>
 </body>
 
 </html>
