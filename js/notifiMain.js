@@ -45,10 +45,9 @@ sendNotificationBtn.addEventListener('click', () => {
     requestPermission()
 })
 showNotificationBtn.addEventListener('click', () => {
-    validateForm('notifi__title')
-    // if(){
-    //     displayNotification()
-    // }
+    if(validateForm('notifi__title')){
+        displayNotification()
+    }
 })
 
 function requestPermission(){
@@ -78,11 +77,11 @@ function displayNotification(){
     //     ]
     // }
     // const title = document.getElementById('notifi__title').value
-    // try {
-    //     new Notification('Hi');
-    // } catch (error) {
-    //     console.error('Notification error:', error);
-    // }
+    try {
+        new Notification('Hi');
+    } catch (error) {
+        console.error('Notification error:', error);
+    }
 
     console.log('hihih')
     // navigator.serviceWorker.ready
