@@ -83,14 +83,38 @@ self.addEventListener('fetch', function(event) {
  * On Message posted to Service worker
  */
 
-self.addEventListener('message', event => {
-    console.log('Msg received: ', event)
-    const data = event.data
-    console.log(event.data)
+// self.addEventListener('message', event => {
+//     const data = event.data
 
-    const whoPostedTheMsg = event.source
-    whoPostedTheMsg.postMessage('Thank to post')
+//     const whoPostedTheMsg = event.source
+//     whoPostedTheMsg.postMessage('Thank to post')
 
+//     const option = {
+//         includeUncontrolled: false,
+//         type: 'window'
+//     }
+//     clients.matchAll(option)
+//     .then(matchClients => {
+//         matchClients.forEach(client => {
+//             if(client.id !== whoPostedTheMsg.id){
+//                 client.postMessage("Some one posted sthg")
+//             }
+//         });
+//     })
+// })
+
+self.addEventListener('notificationclick', event => {
+    switch(event.action){
+        case 'confirm':
+            broadCastToClient('So we both agree on that!')
+            break
+        case 'cancel':
+            broadCastToClient('Let\'s agree to disagree.')
+            break
+    }
+})
+
+function broadCastToClient(message){
     const option = {
         includeUncontrolled: false,
         type: 'window'
@@ -98,9 +122,7 @@ self.addEventListener('message', event => {
     clients.matchAll(option)
     .then(matchClients => {
         matchClients.forEach(client => {
-            if(client.id !== whoPostedTheMsg.id){
-                client.postMessage("Some one posted sthg")
-            }
+            client.postMessage(message)
         });
     })
-})
+}

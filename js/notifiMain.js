@@ -1,22 +1,7 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('/service-worker.js', { scope: '/' })
-        .then( (registration)  => {
-        })
-        .catch( (err) =>  {});
-}
-
+const message = document.getElementsByClassName('message__text')[0]
 if('serviceWorker' in navigator){
-    navigator.serviceWorker.ready
-    .then(registration => {
-        const controller = registration.active
-        const data = "Tan Le"
-
-        controller.postMessage(data)
-    })
-
     navigator.serviceWorker.addEventListener('message', event => {
-        console.log(event)
+        message.innerHTML = event.data
     })
 }
 
@@ -45,9 +30,11 @@ sendNotificationBtn.addEventListener('click', () => {
     requestPermission()
 })
 showNotificationBtn.addEventListener('click', () => {
+    validateForm('notifi__title')
     if(validateForm('notifi__title')){
         displayNotification()
     }
+
 })
 
 function requestPermission(){
@@ -63,35 +50,29 @@ function requestPermission(){
 }
 
 function displayNotification(){
-    // const options = {
-    //     body: document.getElementById('notifi__desc').value,
-    //     actions: [
-    //         {
-    //             action: 'confirm',
-    //             title: 'OK'
-    //         },
-    //         {
-    //             action: 'cancel',
-    //             title: 'Cancel'
-    //         }
-    //     ]
-    // }
-    // const title = document.getElementById('notifi__title').value
-    try {
-        new Notification('Hi');
-    } catch (error) {
-        console.error('Notification error:', error);
+    const options = {
+        body: document.getElementById('notifi__desc').value,
+        image: '../assets/imgs/dream.jpeg',
+        actions: [
+            {
+                action: 'confirm',
+                title: 'OK'
+            },
+            {
+                action: 'cancel',
+                title: 'Cancel'
+            }
+        ]
     }
+    const title = document.getElementById('notifi__title').value
 
-    console.log('hihih')
-    // navigator.serviceWorker.ready
-    //  .then(registration => {
-    //     registration.showNotification(title, options)
-    //  })
+    navigator.serviceWorker.ready
+     .then(registration => {
+        registration.showNotification(title, options)
+     })
 }
 
 function notificationNotAllowed(){
-    console.log('denied')
 }
 
 function validateForm(elementId){
@@ -104,4 +85,12 @@ function validateForm(elementId){
         element.nextElementSibling.style.display = "none";
     }
     return true
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/service-worker.js', { scope: '/' })
+        .then( (registration)  => {
+        })
+        .catch( (err) =>  {});
 }

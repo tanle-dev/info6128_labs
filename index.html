@@ -29,7 +29,7 @@
 
 <body>
   <div class="container">
-    <nav class="navigation__bar">
+    <div class="navigation__bar">
       <div class="navigation__bar--name">
         <div class="navigation__bar--logo">
           <img src="./assets/imgs/logo__192x192.png" alt="App Logo" />
@@ -44,31 +44,36 @@
           <a href="#music">Music Library</a>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+    <div class="notification__screen" id="notifi">
+      <div class="newNotifi__section newSong__section">
+        <h2 class="newSong__title section__title">Notifications</h2>
 
-  <div class="notification__screen" id="notifi">
-    <div class="newNotifi__section newSong__section">
-      <h2 class="newSong__title section__title">Notifications</h2>
+        <button id="sendNotifi__btn" class="button">Send Notifications</button>
 
-      <button id="sendNotifi__btn" class="button">Send Notifications</button>
+        <div class="newNotifi__section inactive" id="notifi__section">
+          <div class="input__group">
+            <label for="notifi__title" class="input__label">Title</label>
+            <input id="notifi__title" type="text" class="input__item" />
+            <p class="error__mess">Please enter title</p>
+          </div>
 
-      <form class="newNotifi__section inactive" id="notifi__section">
-        <div class="input__group">
-          <label for="notifi__title" class="input__label">Title</label>
-          <input id="notifi__title" type="text" class="input__item" />
-          <p class="error__mess">Please enter title</p>
+          <div class="input__group">
+            <label for="notifi__desc" class="input__label">Description</label>
+            <input id="notifi__desc" type="text" class="input__item" />
+            <p class="error__mess">Please enter description</p>
+          </div>
+          <button id="show_notifi" class="button">Show</button>
         </div>
+      </div>
 
-        <div class="input__group">
-          <label for="notifi__desc" class="input__label">Description</label>
-          <input id="notifi__desc" type="text" class="input__item" />
-          <p class="error__mess">Please enter description</p>
-        </div>
-        <button id="show_notifi" class="button">Show</button>
-      </form>
+      <div class="message">
+        <h4 class="message__title">Notification Message</h4>
+        <p class="message__text"></p>
+      </div>
     </div>
   </div>
+
   <div class="music__lib" id="music">
     <form class="newSong__section">
       <h2 class="newSong__title section__title">NEW SONG</h2>
